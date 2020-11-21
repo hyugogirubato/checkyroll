@@ -5,8 +5,8 @@ Crunchyroll and funimation account checker. Allows you to retrieve all the infor
  - Python 3.7
  
  ## Command line
-main -i <input> -t <type> -c <config>
-main --input <input> -type <type> -config <config>
+main -i {input} -t {type} -c {config}
+main --input {input} -type {type} -config {config}
   
 ## Info
  - The <input> value can be a list of accounts in a .txt file in the form "username: password" or directly "username: password".
