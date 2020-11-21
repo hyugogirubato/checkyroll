@@ -1,0 +1,52 @@
+{
+    "command": [
+        {
+            "log": true
+        }
+    ], "crunchyroll_api": [
+        {
+            "version":"1.0",
+            "access_token":"LNDJgOit5yaRIWN",
+            "device_type":"com.crunchyroll.windows.desktop",
+            "device_id":"AYS0igYFpmtb0h2RuJwvHPAhKK6RCYId"
+        }
+    ], "funimation_api": [
+        {
+            "personal_csrftoken":true,
+            "csrftoken":"CoLlotLbMNHRG2JgWQHKGW8pAqtV3qNj7k1ggdFvNLvonT4B4YTRMIrwzwy7ibRN"
+        }
+    ], "backup": [
+        {
+            "funimation_invalid_accounts":true,
+            "funimation_free_accounts":true,
+            "funimation_other_accounts":true,
+            "crunchyroll_invalid_account":true,
+            "crunchyroll_free_account":true,
+            "crunchyroll_other_account":true
+        }
+    ], "crunchyroll_data":[
+        {
+            "class":true,
+            "user_id":true,
+            "etp_guid":true,
+            "first_name":true,
+            "last_name":true,
+            "username":true,
+            "premium":true,
+            "is_publisher":true,
+            "access_type":true,
+            "created":true
+        }
+    ], "funimation_data":[
+        {
+            "user_id":true,
+            "first_name":true,
+            "last_name":true,
+            "displayName":true,
+            "avatar":true,
+            "access_type":true,
+            "defaultLanguage":true,
+            "created":true
+        }
+    ]
+}
