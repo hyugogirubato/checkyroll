@@ -8,7 +8,7 @@ Crunchyroll and funimation account checker. Allows you to retrieve all the infor
  
  ## Command line
  - main -i {input} -t {type} -c {config}
- - main --input {input} -type {type} -config {config}
+ - main --input {input} --type {type} --config {config}
   
 ## Info
 1) The <input> value can be a list of accounts in a .txt file in the form "username:password" or directly "username:password".
