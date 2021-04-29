@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import json
+
 import requests
 import sys
 from termcolor import colored
@@ -188,8 +189,9 @@ class CrunchyrollAPI:
                             result = result + '"access_type":"{}",'.format(access_type)
                     if self.created:
                         result = result + '"created":"{}",'.format(json_login.get('data').get('user').get('created'))
-                    if result[-1] == ',':
-                        result = result[0:len(result) - 1]
+
+                    if result.endswith(","):
+                        result = result[:-1]
                     result = '{"user":{' + result + '},"error":false,"code":"ok"}'
 
                     if access_type == 'free':
@@ -217,7 +219,7 @@ class CrunchyrollAPI:
                         backup.write("\n" + account)
 
         self.display_results(True, None, None)
-        result = 'Skipped: {}\nInvalid: {}\nFree: {}\nOther (Basic & Premium): {}'.format(skipped_account_count, invalid_account_count, free_account_count, other_account_count)
+        result = 'Skipped: {}\nInvalid: {}\nFree: {}\nOther (Premium & Fan & Super Fan): {}'.format(skipped_account_count, invalid_account_count, free_account_count, other_account_count)
         print(result)
         print('\nThe program ended correctly.')
         if self.log:
@@ -356,15 +358,14 @@ class FunimationAPI:
             else:
                 time.sleep(3)
                 json_login = self.login(username, password)
-
-                if json_login.__contains__("'success': False"):
-                    message = json_login.get('error')
-                    if message.__contains__('Failed Authentication'):
-                        code = 'bad_account'
+                if "error" in json_login:
+                    message = json_login.get("error")
+                    if "Failed Authentication" in message:
+                        code = "bad_account"
                         message = 'Failed Authentication.'
-                    elif message.__contains__('Too many failed login attempts'):
-                        code = 'bad_request'
-                        message = 'Too many failed login attempts.'
+                    elif "Too many failed login attempts" in message:
+                        code = "bad_request"
+                        message = "Too many failed login attempts."
                     else:
                         code = 'unknown'
 
@@ -385,7 +386,7 @@ class FunimationAPI:
                         with open('database/funimation_account.txt', 'a') as backup:
                             backup.write("\n" + account)
                 else:
-                    result = ''
+                    result = ""
                     if self.user_id:
                         result = result + '"user_id":{},'.format(json_login['user'].get('id'))
                     if self.first_name:
@@ -403,8 +404,9 @@ class FunimationAPI:
                         result = result + '"defaultLanguage":"{}",'.format(json_login['user'].get('defaultLanguage'))
                     if self.created:
                         result = result + '"created":"{}",'.format(json_login['user'].get('date_joined'))
-                    if result[-1] == ',':
-                        result = result[0:len(result) - 1]
+
+                    if result.endswith(","):
+                        result = result[:-1]
                     result = '{"user":{' + result + '},"error":false,"code":"ok"}'
 
                     if json_login.get('rlildup_cookie').split('web:')[1].__contains__('free'):
